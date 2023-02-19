@@ -56,7 +56,7 @@ export const ProductItem = ({ id, imageUrl, text, price }) => {
       <div className="price-block">
         <div className="price-left">
           <p className="prod-price_name">Цена</p>
-          <b className="price">{price} руб.</b>
+          <b className="price">{price.toLocaleString()} руб.</b>
         </div>
         <div className="price-right">
           {!isOk ? (

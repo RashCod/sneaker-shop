@@ -13,7 +13,7 @@ export const CartItem = ({ id, imageUrl, text, price }) => {
       </div>
       <div className="cart-info">
         <p className="cart-text">{text}</p>
-        <b className="cart-price">{price} ₽</b>
+        <b className="cart-price">{price.toLocaleString()} ₽</b>
       </div>
       <div className="cart-ix">
         <img  onClick={() => dispatch(removeProduct(id))} src={closeCart} alt="close" />

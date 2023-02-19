@@ -32,7 +32,7 @@ export const Cart = ({ isCloseCart, setCloseCart }) => {
                   <div className="cart-result">
                     <p className="cart-resutl_title">Итого:</p>
                     <div className="cart-line"></div>
-                    <b className="cart-total_price">{totalPrice} ₽</b>
+                    <b className="cart-total_price">{totalPrice.toLocaleString()} ₽</b>
                   </div>
                   <button
                     onClick={() => isReadyClick(true)}
