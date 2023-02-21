@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Skeleton } from "../Pages/Skeleton";
 import { ProductItem } from "./ProductItem";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slice/searchSlice";
-
+import axios from "axios";
+import { fetchProducts } from "../../redux/slice/productSlice";
 
 export const Products = () => {
-  const [item, setItem] = useState([]);
-  const [isLoading, setLoading] = useState(true);
   const searchValue = useSelector((state) => state.searchSlice.searchValue);
+  const {product,status} = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   const search = searchValue ? `search=${searchValue}` : "";
 
- 
+
 
   useEffect(() => {
-    fetch(`https://6383e2be4ce192ac604c6e5a.mockapi.io/iphone?${search}`)
-      .then((res) => res.json())
-      .then((json) => setItem(json));
-    setTimeout(()=>{
-      setLoading(false);
-    },2000)
+    dispatch(fetchProducts({search}));
+
+    window.scrollTo(0, 0);
   }, [search]);
+
+  const skeleton =  [...new Array(12)].map((_, index) => <Skeleton key={index} />)
+  const prod = product.map((obj, index) => <ProductItem key={index} {...obj} />)
 
   return (
     <div className="products-block">
@@ -45,8 +45,9 @@ export const Products = () => {
               stroke-linecap="round"
             />
           </svg>
-          <input value={searchValue}
-          onChange={(e) => dispatch(setSearchValue(e.target.value))}
+          <input
+            value={searchValue}
+            onChange={(e) => dispatch(setSearchValue(e.target.value))}
             placeholder="Поиск..."
             type="text"
             className="products-input"
@@ -54,9 +55,7 @@ export const Products = () => {
         </div>
       </div>
       <div className="products-grid">
-        {isLoading
-          ? [...new Array(12)].map((_, index) => <Skeleton key={index} />)
-          : item.map((obj, index) => <ProductItem key={index} {...obj} />)}
+        {status === 'loading' ? skeleton : prod }
       </div>
     </div>
   );
