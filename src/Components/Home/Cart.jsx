@@ -4,9 +4,10 @@ import { CartItem } from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { CartEmpty } from "./CartEmpty";
 import { Ready } from "./Ready";
+import { cartSelect } from "../../redux/slice/cartSlice";
 
 export const Cart = ({ isCloseCart, setCloseCart }) => {
-  const { product, totalPrice } = useSelector((state) => state.cartSlice);
+  const { product, totalPrice } = useSelector(cartSelect);
   const dispatch = useDispatch();
   const [readyClick, isReadyClick] = React.useState(false);
 

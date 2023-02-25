@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Skeleton } from "../Pages/Skeleton";
 import { ProductItem } from "./ProductItem";
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchValue } from "../../redux/slice/searchSlice";
-import axios from "axios";
-import { fetchProducts } from "../../redux/slice/productSlice";
+import { searchSelect, setSearchValue } from "../../redux/slice/searchSlice";
+import { fetchProducts, productSelect } from "../../redux/slice/productSlice";
 
 export const Products = () => {
-  const searchValue = useSelector((state) => state.searchSlice.searchValue);
-  const {product,status} = useSelector((state) => state.product);
+  const searchValue = useSelector(searchSelect);
+  const { product, status } = useSelector(productSelect);
   const dispatch = useDispatch();
 
   const search = searchValue ? `search=${searchValue}` : "";
 
-
-
   useEffect(() => {
-    dispatch(fetchProducts({search}));
+    dispatch(fetchProducts({ search }));
 
     window.scrollTo(0, 0);
   }, [search]);
 
-  const skeleton =  [...new Array(12)].map((_, index) => <Skeleton key={index} />)
-  const prod = product.map((obj, index) => <ProductItem key={index} {...obj} />)
+  const skeleton = [...new Array(12)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
+  const prod = product.map((obj, index) => (
+    <ProductItem key={index} {...obj} />
+  ));
 
   return (
     <div className="products-block">
@@ -55,7 +56,7 @@ export const Products = () => {
         </div>
       </div>
       <div className="products-grid">
-        {status === 'loading' ? skeleton : prod }
+        {status === "loading" ? skeleton : prod}
       </div>
     </div>
   );
