@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import FullProductSkeleton from "../Pages/FullProductSekeleton";
 
 export const FullProduct = () => {
   const [product, setProduct] = React.useState();
@@ -21,7 +22,7 @@ export const FullProduct = () => {
   }, []);
 
   if(!product){
-    return 'Загрузка...'
+    return <FullProductSkeleton/>
   }
 
   return (
