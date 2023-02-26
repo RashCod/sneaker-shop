@@ -412,3 +412,28 @@ body {
   color: #000000;
   opacity: 0.4;
 }
+
+.fullProdBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullProdBlock img{
+  width: 300px;
+  height: 300px;
+}
+
+.fullProdInfo{
+  width: 300px;
+  
+}
+
+.fullProdInfo h2{
+font-size: 20px;
+margin-bottom: 20px;
+}
+
+.fullProdInfo p{
+margin-bottom: 8px;
+}

@@ -14,8 +14,6 @@ export const Products = () => {
 
   useEffect(() => {
     dispatch(fetchProducts({ search }));
-
-    window.scrollTo(0, 0);
   }, [search]);
 
   const skeleton = [...new Array(12)].map((_, index) => (

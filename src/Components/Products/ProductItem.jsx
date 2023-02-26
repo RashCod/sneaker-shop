@@ -6,6 +6,7 @@ import okey from "../../img/okey.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "../../redux/slice/cartSlice";
 import { removeProduct } from "../../redux/slice/cartSlice";
+import { Link } from "react-router-dom";
 
 export const ProductItem = ({ id, imageUrl, text, price }) => {
   const [isOk, setOk] = useState(false);
@@ -32,7 +33,8 @@ export const ProductItem = ({ id, imageUrl, text, price }) => {
 
   return (
     <div className="products-miniBlock">
-      <div className="prod-img_block">
+     <Link to={`/product/${id}`}>
+     <div className="prod-img_block">
         <img className="prod-img" src={imageUrl} alt="product" />
         {!isSearch ? (
           <img
@@ -51,9 +53,9 @@ export const ProductItem = ({ id, imageUrl, text, price }) => {
         )}
 
         {/* <img className="prod-search" src={searchActive} alt="searchActive" /> */}
-      </div>
+      </div></Link>
       <div className="prod-text">{text}</div>
-      <div className="price-block">
+      <div onClick={(e)=> e.stopPropagation()} className="price-block">
         <div className="price-left">
           <p className="prod-price_name">Цена</p>
           <b className="price">{price.toLocaleString()} руб.</b>

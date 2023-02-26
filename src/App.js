@@ -4,6 +4,7 @@ import { Home } from "./Components/Home/Home";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { User } from "./Components/Home/User/User";
+import { FullProduct } from "./Components/Products/FullProduct";
 
 function App() {
   const [isCloseCart, setCloseCart] = React.useState(false);
@@ -18,6 +19,7 @@ function App() {
               <Home isCloseCart={isCloseCart} setCloseCart={setCloseCart} />
             }
           />
+          <Route path="/product/:id" element={<FullProduct/>}/>
           <Route path="/user" element={<User />} />
         </Routes>
       </div>
