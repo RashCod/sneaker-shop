@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { CartEmpty } from "./CartEmpty";
 import { Ready } from "./Ready";
 import { cartSelect } from "../../redux/slice/cartSlice";
+import { isReadyClick } from "../../redux/slice/cartSlice";
 
 export const Cart = ({ isCloseCart, setCloseCart }) => {
-  const { product, totalPrice } = useSelector(cartSelect);
+  const { product, totalPrice, readyClick } = useSelector(cartSelect);
   const dispatch = useDispatch();
-  const [readyClick, isReadyClick] = React.useState(false);
 
   return (
     isCloseCart && (
@@ -33,10 +33,12 @@ export const Cart = ({ isCloseCart, setCloseCart }) => {
                   <div className="cart-result">
                     <p className="cart-resutl_title">Итого:</p>
                     <div className="cart-line"></div>
-                    <b className="cart-total_price">{totalPrice.toLocaleString()} ₽</b>
+                    <b className="cart-total_price">
+                      {totalPrice.toLocaleString()} ₽
+                    </b>
                   </div>
                   <button
-                    onClick={() => isReadyClick(true)}
+                    onClick={() => dispatch(isReadyClick(true))}
                     className="cart-button"
                   >
                     <p className="cart-btn-text">

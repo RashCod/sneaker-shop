@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 
 export const ProductItem = ({ id, imageUrl, text, price }) => {
   const [isOk, setOk] = useState(false);
-  const [isSearch, setSearch] = useState(false);
-  const { product, totalPrice } = useSelector((state) => state.cartSlice);
+  // const [isSearch, setSearch] = useState(false);
   const dispatch = useDispatch()
 
   const addProductionFun = () => {
@@ -36,7 +35,7 @@ export const ProductItem = ({ id, imageUrl, text, price }) => {
      <Link to={`/product/${id}`}>
      <div className="prod-img_block">
         <img className="prod-img" src={imageUrl} alt="product" />
-        {!isSearch ? (
+        {/* {!isSearch ? (
           <img
             onClick={() => setSearch(true)}
             className="prod-search"
@@ -50,7 +49,7 @@ export const ProductItem = ({ id, imageUrl, text, price }) => {
             src={searchActive}
             alt="searchActive"
           />
-        )}
+        )} */}
 
         {/* <img className="prod-search" src={searchActive} alt="searchActive" /> */}
       </div></Link>
