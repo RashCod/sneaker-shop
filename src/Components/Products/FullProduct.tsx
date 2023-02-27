@@ -3,8 +3,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FullProductSkeleton from "../Pages/FullProductSekeleton";
 
-export const FullProduct = () => {
-  const [product, setProduct] = React.useState();
+export const FullProduct :React.FC = () => {
+  const [product, setProduct] = React.useState<{
+    imageUrl: string,
+    text:string,
+    price:number
+  }>();
   const { id } = useParams();
 
   useEffect(() => {

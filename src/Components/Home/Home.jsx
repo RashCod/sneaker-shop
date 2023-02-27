@@ -2,7 +2,7 @@ import React from "react";
 import { Skeleton } from "../Pages/Skeleton";
 import { Products } from "../Products/Products";
 import { Banner } from "./../Banner/Banner";
-import { Cart } from "./Cart";
+import { Cart } from "./Cart.jsx";
 
 export const Home = ({isCloseCart,setCloseCart}) => {
   return (

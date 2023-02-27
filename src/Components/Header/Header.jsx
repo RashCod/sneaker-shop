@@ -5,9 +5,10 @@ import heard from "../.././img/heard.svg";
 import user from "../.././img/user.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { cartSelect } from "../../redux/slice/cartSlice";
 
 export const Header = ({ isCloseCart, setCloseCart }) => {
-  const { product, totalPrice } = useSelector((state) => state.cartSlice);
+  const { product, totalPrice } = useSelector(cartSelect);
   const path = useLocation()
   console.log(path);
   return (
