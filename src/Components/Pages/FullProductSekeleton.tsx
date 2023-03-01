@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const FullProductSkeleton = () => (
+const FullProductSkeleton:React.FC = () => (
     <div className="fullProdBlock">
     <ContentLoader 
     speed={2}

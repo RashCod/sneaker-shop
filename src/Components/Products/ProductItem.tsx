@@ -8,7 +8,14 @@ import { addProduct } from "../../redux/slice/cartSlice";
 import { removeProduct } from "../../redux/slice/cartSlice";
 import { Link } from "react-router-dom";
 
-export const ProductItem = ({ id, imageUrl, text, price }) => {
+type ProductTypesProps = {
+  id: string,
+  imageUrl: string,
+  text: string,
+  price: number,
+}
+
+export const ProductItem: React.FC <ProductTypesProps> = ({ id, imageUrl, text, price }) => {
   const [isOk, setOk] = useState(false);
   // const [isSearch, setSearch] = useState(false);
   const dispatch = useDispatch()

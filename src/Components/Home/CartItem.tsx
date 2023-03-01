@@ -1,9 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import closeCart from "../.././img/closeCart.svg";
-import {removeProduct} from '../.././redux/slice/cartSlice'
+import {removeProduct} from '../../redux/slice/cartSlice'
 
-export const CartItem = ({ id, imageUrl, text, price }) => {
+type ProductTypesProps = {
+  id: string,
+  imageUrl: string,
+  text: string,
+  price: number,
+}
+
+export const CartItem: React.FC<ProductTypesProps> = ({ id, imageUrl, text, price }) => {
   const dispatch = useDispatch()
 
   return (

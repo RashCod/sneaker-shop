@@ -7,7 +7,13 @@ import { Ready } from "./Ready";
 import { cartSelect } from "../../redux/slice/cartSlice";
 import { isReadyClick } from "../../redux/slice/cartSlice";
 
-export const Cart = ({ isCloseCart, setCloseCart }) => {
+
+type CloseCartProps = {
+  isCloseCart: any;
+  setCloseCart: (i:boolean) => void;
+};
+
+export const Cart: React.FC<CloseCartProps> = ({ isCloseCart, setCloseCart }) => {
   const { product, totalPrice, readyClick } = useSelector(cartSelect);
   const dispatch = useDispatch();
 
@@ -18,7 +24,7 @@ export const Cart = ({ isCloseCart, setCloseCart }) => {
           <div onClick={(e) => e.stopPropagation()} className="cart-body">
             <div className="cart-title">Корзина</div>
             {readyClick ? (
-              <Ready />
+              <Ready isCloseCart={isCloseCart} setCloseCart={setCloseCart}/>
             ) : totalPrice <= 0 ? (
               <CartEmpty
                 isCloseCart={isCloseCart}
@@ -26,7 +32,7 @@ export const Cart = ({ isCloseCart, setCloseCart }) => {
               />
             ) : (
               <div className="cart-blockEmpty">
-                {product.map((obj) => (
+                {product.map((obj:any) => (
                   <CartItem key={obj.id} {...obj} />
                 ))}
                 <div className="order-block">

@@ -3,7 +3,12 @@ import readyImg from '../.././img/ready.jpg'
 import left from '../.././img/left.svg'
 import { Link } from 'react-router-dom'
 
-export const Ready = ({isCloseCart,setCloseCart}) => {
+type CloseCartProps = {
+  isCloseCart: boolean;
+  setCloseCart: (i:boolean) => void;
+};
+
+export const Ready: React.FC<CloseCartProps> = ({isCloseCart,setCloseCart}) => {
   return (
   <div className='empty-block'>
     <img className='ready-img' src={readyImg} alt="basket" />
